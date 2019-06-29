@@ -1,12 +1,24 @@
-const express = require('express')
-const mongoose = require('mongoose');
+const express = require("express");
+const mongoose = require("mongoose");
 const app = express();
 
 const PORT = process.env.PORT || 3030;
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
-mongoose.connect(MONGODB_URI)
+mongoose.connect(
+  MONGODB_URI,
+  {
+    useCreateIndex: true,
+    useNewUrlParser: true
+  },
+  function(err) {
+    if (err) {
+      console.log(err);
+    }
+  }
+);
 
 app.listen(PORT, function() {
-    console.log('started on ' + PORT)
+  console.log("started on " + PORT);
 });
