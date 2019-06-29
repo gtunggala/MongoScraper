@@ -28,6 +28,7 @@ mongoose.connect(
 app.get("/", function(req, res) {
   res.sendFile(path.resolve(__dirname + "public/index.html"));
 });
+
 app.listen(PORT, function() {
   console.log("started on " + PORT);
 });
